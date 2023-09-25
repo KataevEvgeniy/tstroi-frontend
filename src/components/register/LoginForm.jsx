@@ -7,6 +7,8 @@ import axios from "axios";
 const LoginForm = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ login: "", password: "" });
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   useEffect(() => {});
   return (
     <section
@@ -39,6 +41,8 @@ const LoginForm = () => {
             }))
           }
         />
+        {/* {error ? <label>{errorMsg}</label> : null} */}
+        {error ? <label className="text-red-600">{errorMsg}</label> : null}
         <Button
           onClick={(e) => {
             e.preventDefault();
@@ -49,15 +53,21 @@ const LoginForm = () => {
                 login: userData.login,
                 password: userData.password,
               },
-            }).then(function (response) {
-              console.log(response);
-              if (
-                response.data.login == userData.login &&
-                response.data.password == userData.password
-              ) {
-                navigate("/dashboard");
-              }
-            });
+            })
+              .then(function (response) {
+                console.log(response);
+                if (
+                  response.data.login == userData.login &&
+                  response.data.password == userData.password
+                ) {
+                  navigate("/dashboard");
+                }
+              })
+              .catch(function (err) {
+                setErrorMsg(err.message);
+                setError((prev) => !prev);
+                console.log(err);
+              });
           }}
         >
           Войти
