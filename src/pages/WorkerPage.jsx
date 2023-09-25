@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import { Stack, Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -46,29 +48,43 @@ const rows = [
 ];
 
 function WorkerPage() {
+  const navigate = useNavigate();
   const [workersList, getWorkerList] = useState(rows);
   useEffect(() => {});
 
   return (
     <>
-      <Paper>
-        <Box sx={{ height: 400, width: "100%" }}>
-          <DataGrid
-            rows={workersList}
-            columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: 5,
+      <Stack gap={1}>
+        <Button
+          style={{ marginLeft: "1400px", marginTop: "20px" }}
+          variant="contained"
+          onClick={() => {
+            navigate("create");
+          }}
+          color="success"
+          sx={{ mb: 5 }}
+        >
+          Новый рабочий
+        </Button>
+        <Paper>
+          <Box sx={{ height: 400, width: "100%" }}>
+            <DataGrid
+              rows={workersList}
+              columns={columns}
+              initialState={{
+                pagination: {
+                  paginationModel: {
+                    pageSize: 5,
+                  },
                 },
-              },
-            }}
-            pageSizeOptions={[5]}
-            checkboxSelection
-            disableRowSelectionOnClick
-          />
-        </Box>
-      </Paper>
+              }}
+              pageSizeOptions={[5]}
+              checkboxSelection
+              disableRowSelectionOnClick
+            />
+          </Box>
+        </Paper>
+      </Stack>
     </>
   );
 }

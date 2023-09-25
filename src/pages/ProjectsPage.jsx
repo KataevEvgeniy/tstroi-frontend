@@ -9,8 +9,10 @@ import {
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ProjectsPage() {
+  const navigate = useNavigate();
   const [projectList, setProjectList] = useState([]);
   useEffect(() => {
     axios
@@ -39,6 +41,9 @@ function ProjectsPage() {
           variant="contained"
           color="success"
           sx={{ mb: 5 }}
+          onClick={() => {
+            navigate("create");
+          }}
         >
           Новый проект
         </Button>
