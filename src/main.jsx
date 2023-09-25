@@ -13,16 +13,17 @@ import DashboardPage from "./pages/DashboardPage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import WorkerPage from "./pages/WorkerPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="login" element={<LoginPage />}/>
-      <Route element={<SidebarPage/>}>
-        <Route path={"dashboard"} element={<DashboardPage/>}/>
-        <Route path={"workers"} element={<WorkerPage/>}/>
-        <Route path={"projects"} element={<ProjectsPage/>}/>
-        <Route path={"projects/:id"} element={<ProjectPage/>}/>
+      <Route path="login" element={<LoginPage />} />
+      <Route element={<SidebarPage />} errorElement={<ErrorPage />}>
+        <Route path={"dashboard"} element={<DashboardPage />} />
+        <Route path={"workers"} element={<WorkerPage />} />
+        <Route path={"projects"} element={<ProjectsPage />} />
+        <Route path={"projects/:id"} element={<ProjectPage />} />
       </Route>
     </Route>
   )

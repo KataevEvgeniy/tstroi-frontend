@@ -9,7 +9,8 @@ const LoginForm = () => {
   const [userData, setUserData] = useState({ login: "", password: "" });
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  useEffect(() => {});
+  function getHashedPassword(password) {}
+
   return (
     <section
       className="w-96 py-16 px-16 flex flex-col bg-white rounded-lg"
