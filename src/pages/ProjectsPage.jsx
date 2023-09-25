@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import { Typography, CardMedia, Stack, Avatar } from "@mui/material";
+import { Typography, CardMedia } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
