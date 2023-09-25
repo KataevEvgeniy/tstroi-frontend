@@ -16,7 +16,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 import ErrorPage from "./pages/ErrorPage";
 import CreateProjectPage from "./pages/CreateProjectPage";
 import CreateWorkerPage from "./pages/CreateWorkerPage";
-import ChangeUser from "./pages/ChangeUser";
+import ChangeUser from "./pages/ChangeUserPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
