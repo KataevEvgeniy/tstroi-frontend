@@ -1,18 +1,49 @@
-import { Paper } from "@mui/material";
-import React from "react";
-import MainCard from "../components/card/MainCard";
-import { Construction } from "@mui/icons-material";
+import {
+  Paper,
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  CardActions,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Button from "@mui/material/Button";
+import axios from "axios";
 
 function ProjectsPage() {
+  const [projectList, setProjectList] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/getAllProjects", {})
+      .then(function (response) {
+        setProjectList(response.data);
+      });
+  }),
+    [projectList];
   return (
-    <Paper>
-      <MainCard
-        title={"Project"}
-        text={"Hello"}
-        buttonText={"Перейти"}
-        iconExample={Construction}
+    <Card sx={{ maxWidth: 1592 }}>
+      <CardMedia
+        sx={{ height: 284 }}
+        image="/static/images/1.png"
+        title="construction"
       />
-    </Paper>
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          ТСТРОЙ
+        </Typography>
+        <Typography gutterBottom variant="h5" component="div">
+          Проекты
+        </Typography>
+        <Button
+          style={{ marginLeft: "1400px", marginTop: "20px" }}
+          variant="contained"
+          color="success"
+          sx={{ mb: 5 }}
+        >
+          Новый проект
+        </Button>
+      </CardContent>
+    </Card>
   );
 }
 

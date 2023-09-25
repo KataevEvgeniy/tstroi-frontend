@@ -14,6 +14,9 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 import WorkerPage from "./pages/WorkerPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ErrorPage from "./pages/ErrorPage";
+import CreateProjectPage from "./pages/CreateProjectPage";
+import CreateWorkerPage from "./pages/CreateWorkerPage";
+import ChangeUser from "./pages/ChangeUser";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,6 +25,9 @@ const router = createBrowserRouter(
       <Route element={<SidebarPage />} errorElement={<ErrorPage />}>
         <Route path={"dashboard"} element={<DashboardPage />} />
         <Route path={"workers"} element={<WorkerPage />} />
+        <Route path="workers/create" element={<CreateWorkerPage />} />
+        <Route path="projects/create" element={<CreateProjectPage />} />
+        <Route path="workers/edit" element={<ChangeUser />} />
         <Route path={"projects"} element={<ProjectsPage />} />
         <Route path={"projects/:id"} element={<ProjectPage />} />
       </Route>

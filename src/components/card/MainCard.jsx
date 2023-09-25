@@ -5,7 +5,13 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Button";
 import { Box, CardActions, CardMedia, Grid, Icon } from "@mui/material";
 
-function MainCard({ title, text, buttonText, iconExample: IconExample }) {
+function MainCard({
+  title,
+  text,
+  buttonText,
+  iconExample: IconExample,
+  getLink,
+}) {
   return (
     <Card>
       <CardContent
@@ -32,7 +38,9 @@ function MainCard({ title, text, buttonText, iconExample: IconExample }) {
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size="small">{buttonText}</Button>
+        <Button size="small" action={getLink}>
+          {buttonText}
+        </Button>
       </CardActions>
     </Card>
   );
