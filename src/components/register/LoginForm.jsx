@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../UI/button/Button";
 import Input from "../../UI/input/Input";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({ login: "", password: "" });
+  useEffect(() => {});
   return (
     <section
       className="w-96 py-16 px-16 flex flex-col bg-white rounded-lg"
@@ -40,8 +42,22 @@ const LoginForm = () => {
         <Button
           onClick={(e) => {
             e.preventDefault();
-            console.log(userData);
-            navigate("/dashboard", { replace: true });
+            axios({
+              method: "post",
+              url: "http://localhost:8085/signIn",
+              data: {
+                login: userData.login,
+                password: userData.password,
+              },
+            }).then(function (response) {
+              console.log(response);
+              if (
+                response.data.login == userData.login &&
+                response.data.password == userData.password
+              ) {
+                navigate("/dashboard");
+              }
+            });
           }}
         >
           Войти
